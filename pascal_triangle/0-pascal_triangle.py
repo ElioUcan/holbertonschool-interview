@@ -2,6 +2,7 @@
 
 """Pascal triangles module"""
 
+
 def pascal_triangle(n):
     """Pascal triangle funcion"""
 
