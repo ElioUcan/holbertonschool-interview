@@ -3,6 +3,8 @@
 """Pascal triangles module"""
 
 def pascal_triangle(n):
+    """Pascal triangle funcion"""
+
     if n <= 0:
         return []
 
