@@ -21,5 +21,5 @@ def minOperations(n):
         f += 1
 
     if n > 1:
-        numOp += numOp
+        numOp += n
     return numOp
