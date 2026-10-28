@@ -22,13 +22,27 @@ def makeChange(coins, total):
     if not coins:
         return -1
 
-    coins.sort(reverse=True)
-    count = 0
+    g = coins[0]
+    for c in coins[1:]:
+        while c:
+            g, c = c, g % c
+    if total % g != 0:
+        return -1
 
-    for coin in coins:
-        if total <= 0:
-            break
-        count += total // coin
-        total %= coin
+    if total in coins:
+        return 1
 
-    return count if total == 0 else -1
+    inf = total + 1
+    dp = [inf] * (total + 1)
+    dp[0] = 0
+    coins = sorted(set(coins))
+
+    for i in range(1, total + 1):
+        for coin in coins:
+            if coin > i:
+                break
+            c = dp[i - coin] + 1
+            if c < dp[i]:
+                dp[i] = c
+
+    return dp[total] if dp[total] != inf else -1
